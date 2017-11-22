@@ -1,0 +1,42 @@
+
+
+<div *ngIf="member" >
+        <h2>{{member.name}}'s details!</h2>
+        <div><label>id: </label>{{member.id}}</div>
+        <div>
+            <label>name: </label>
+            <input ngNativeValidate id="name" name="name" class="form-control"
+                required = required [(ngModel)]="member.name" #name="ngModel" placeholder="name"/>
+         </div>
+         <br>
+         <div>
+            <label>Status: </label>
+            <select [(ngModel)] ="member.status">
+                    <option *ngFor="let fOptions of StatusOptions" value= {{fOptions.name}}>
+                      {{fOptions.name}}
+                    </option>
+            </select>
+         </div>
+         <br>
+         <div>
+            <label>Ready: </label>
+            <select [(ngModel)] ="member.ready">
+                <option *ngFor="let fOptions of ReadyOptions" value= {{fOptions.name}}>
+                  {{fOptions.name}}
+                </option>
+        </select>
+         </div>
+         <br>
+         <div>
+                <label>Guardian: </label>
+                <select [(ngModel)] ="member.guardian">
+                        <option *ngFor="let fOptions of GuardianOptions" value= {{fOptions.name}}>
+                          {{fOptions.name}}
+                        </option>
+                </select>
+         </div>
+            <button (click)="goBack()">Back</button>
+            <button (click)="save()">Save</button>
+    </div>
+    
+    

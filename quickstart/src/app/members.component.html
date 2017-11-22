@@ -1,0 +1,22 @@
+            <h2>My members</h2>
+            <div>
+              <label>member name:</label> <input #memberName />
+              <button (click)="add(memberName.value); memberName.value=''">
+                Add
+              </button>
+            </div>
+            <table class="members" cellpadding="10">
+              <tr *ngFor="let member of members" 
+              [class.selected]="member === selectedmember"
+              (click)="onSelect(member)">
+              <td>{{member.id}}</td> <td>{{member.name}}</td> <td>{{member.status}}</td> <td>{{member.ready}}</td> <td>{{member.guardian}}</td>
+              <td><button class="delete"
+              (click)="delete(member); $event.stopPropagation()">x</button></td>
+            </tr>
+            </table>
+              <div *ngIf="selectedmember">
+            <h2>
+              You have selected {{selectedmember.name}}
+            </h2>
+              <button (click)="gotoDetail()">View Details</button>
+            </div>
